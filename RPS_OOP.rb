@@ -1,3 +1,5 @@
+require 'pry'
+
 ROCK_TYPE = 1;
 PAPER_TYPE = 2;
 SCISSORS_TYPE = 3;
@@ -5,8 +7,7 @@ SCISSORS_TYPE = 3;
 # 宣告一個戰鬥類別，此類別人用控制戰鬥流程
 class Battle
 	# 類別變數，產生三個基本拳種物件
-    @@Elements = Array.new(3) #{Element.new(ROCK_TYPE, SCISSORS_TYPE, PAPER_TYPE), Element,new(PAPER_TYPE, ROCK_TYPE, SCISSORS_TYPE), Element.new(SCISSORS_TYPE, PAPER_TYPE, ROCK_TYPE)}
-
+    @@Elements = Array.new(3)
     def initialize
     	@@Elements[0] = Element.new(ROCK_TYPE, SCISSORS_TYPE, PAPER_TYPE)
     	@@Elements[1] = Element.new(PAPER_TYPE, ROCK_TYPE, SCISSORS_TYPE)
@@ -68,6 +69,7 @@ class Human < Player
         begin
             puts "請選擇你要出的拳，1. 剪刀，2. 石頭，3. 布"
             _input = gets.chomp.to_i
+            # binding.pry
         end until (_input == ROCK_TYPE) || (_input == PAPER_TYPE) || (_input == SCISSORS_TYPE)
         return Battle.getElement(_input)
     end
